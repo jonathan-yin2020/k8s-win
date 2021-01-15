@@ -108,7 +108,7 @@ metadata:
 data:
   cni-conf.json: |
     {
-      "name": "cbr0",
+      "name": "vxlan0",
       "cniVersion": "0.3.1",
       "plugins": [
         {
