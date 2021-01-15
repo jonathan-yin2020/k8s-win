@@ -26,7 +26,7 @@ $NetworkMode="overlay"
 $ClusterCIDR="10.244.0.0/16"
 $KubeDnsServiceIP="10.96.0.10"
 $ServiceCIDR="10.96.0.0/12"
-$InterfaceName="Ethernet"
+$InterfaceName="Ethernet 3"
 $LogDir="C:\k`logs"
 
 $BaseDir = "c:\k"
