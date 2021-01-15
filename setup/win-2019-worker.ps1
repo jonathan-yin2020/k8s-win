@@ -2,13 +2,13 @@ Param(
     [parameter(Mandatory = $true)] $ManagementIP
 )
 
-$KUBERNETES_VERSION="1.15.1"
+$KUBERNETES_VERSION="1.18.9"
 
 Start-Service docker  
 
 # tag the image kube uses for Pause
-docker image pull mcr.microsoft.com/windows/nanoserver:1809
-docker image tag mcr.microsoft.com/windows/nanoserver:1809 microsoft/nanoserver:latest
+docker image pull mcr.microsoft.com/windows/nanoserver:1903
+docker image tag mcr.microsoft.com/windows/nanoserver:1903 microsoft/nanoserver:latest
 
 # download the Kube binaries
 mkdir -p C:\k\logs
@@ -77,7 +77,7 @@ mv C:\k\nssm\nssm-2.24-101-g897c7ad\win64\*.exe C:\k
 
 # register & start kubelet
 .\nssm.exe install $KubeletSvc C:\k\kubelet.exe
-.\nssm.exe set $KubeletSvc AppParameters --hostname-override=$Hostname --v=6 --pod-infra-container-image=mcr.microsoft.com/k8s/core/pause:1.0.0 --resolv-conf=""  --enable-debugging-handlers --cluster-dns=$KubeDnsServiceIP --cluster-domain=cluster.local --kubeconfig=c:\k\config --hairpin-mode=promiscuous-bridge --image-pull-progress-deadline=20m --cgroups-per-qos=false  --log-dir=$LogDir --logtostderr=false --enforce-node-allocatable="" --network-plugin=cni --cni-bin-dir=c:\k\cni --cni-conf-dir=c:\k\cni\config
+.\nssm.exe set $KubeletSvc AppParameters --hostname-override=$Hostname --v=6 --pod-infra-container-image=mcr.microsoft.com/k8s/core/pause:1.2.0 --resolv-conf=""  --enable-debugging-handlers --cluster-dns=$KubeDnsServiceIP --cluster-domain=cluster.local --kubeconfig=c:\k\config --hairpin-mode=promiscuous-bridge --image-pull-progress-deadline=20m --cgroups-per-qos=false  --log-dir=$LogDir --logtostderr=false --enforce-node-allocatable="" --network-plugin=cni --cni-bin-dir=c:\k\cni --cni-conf-dir=c:\k\cni\config
 .\nssm.exe set $KubeletSvc AppDirectory C:\k
 .\nssm.exe start $KubeletSvc
 
