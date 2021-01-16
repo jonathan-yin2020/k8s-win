@@ -7,8 +7,8 @@ $KUBERNETES_VERSION="1.18.9"
 Start-Service docker  
 
 # tag the image kube uses for Pause
-docker image pull mcr.microsoft.com/windows/nanoserver:1903
-docker image tag mcr.microsoft.com/windows/nanoserver:1903 microsoft/nanoserver:latest
+docker image pull mcr.microsoft.com/windows/nanoserver:1809
+docker image tag mcr.microsoft.com/windows/nanoserver:1809 microsoft/nanoserver:latest
 
 # download the Kube binaries
 mkdir -p C:\k\logs
@@ -26,7 +26,7 @@ $NetworkMode="overlay"
 $ClusterCIDR="10.244.0.0/16"
 $KubeDnsServiceIP="10.96.0.10"
 $ServiceCIDR="10.96.0.0/12"
-$InterfaceName="Ethernet 3"
+$InterfaceName="Ethernet"
 $LogDir="C:\k`logs"
 
 $BaseDir = "c:\k"
